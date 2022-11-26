@@ -9,7 +9,7 @@
 	};
 }
 
-@functions {
+@{
 	// Method
 	double? GetAge(DateTime? dateOfBirth)
 	{
@@ -23,8 +23,7 @@
 		}
 	}
 
-	int x = 10;
-	string Name { get; set; } = "Hello name";
+	string alertMessage = $"<script>alert('{people.Count} people found')</script>";
 }
 
 <!DOCTYPE html>
@@ -34,7 +33,8 @@
 	<meta charset="UTF-8" />
 </head>
 <body>
-	<h1>Welcome to @Name</h1>
+	@Html.Raw(alertMessage)
+	<h1>Welcome</h1>
 	@for (int i = 0; i < 2; i++)
 	{
 		Person person = people[i];

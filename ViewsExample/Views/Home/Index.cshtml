@@ -9,6 +9,24 @@
 	};
 }
 
+@functions {
+	// Method
+	double? GetAge(DateTime? dateOfBirth)
+	{
+		if (dateOfBirth is not null)
+		{
+			return Math.Round((DateTime.Now - dateOfBirth.Value).TotalDays / 365.25);
+		}
+		else
+		{
+			return null;
+		}
+	}
+
+	int x = 10;
+	string Name { get; set; } = "Hello name";
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +34,7 @@
 	<meta charset="UTF-8" />
 </head>
 <body>
-	<h1>Welcome</h1>
+	<h1>Welcome to @Name</h1>
 	@for (int i = 0; i < 2; i++)
 	{
 		Person person = people[i];
@@ -29,6 +47,7 @@
 			@if (person.DateOfBirth != null)
 			{
 				<span>@person.DateOfBirth.Value.ToString("MM-dd-yyyy")</span>
+				<span>@GetAge(person.DateOfBirth) years old</span>
 			}
 		</div>
 	}

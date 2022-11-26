@@ -1,7 +1,7 @@
 ﻿@using ViewsExample.Models
 @{
 	string appTitle = "Asp.Net Core App";
-	Person person = new Person() { Name = "John", DateOfBirth = null };
+	Person person = new Person() { Name = "John", DateOfBirth = null, PersonGender = Gender.Male };
 	// Convert.ToDateTime("2004-07-01");
 }
 
@@ -22,6 +22,19 @@
 	else
 	{
 		<h3>Date of birth is unknown</h3>	
+	}
+
+	@switch(person.PersonGender)
+	{
+		case Gender.Male:
+			<p>November 19 is International Men's Day</p>
+			break;
+		case Gender.Female:
+			<p>March 8 is International Women's Day</p>
+			break;
+		case Gender.Other:
+			<p>March 31 is International Transgender's Day</p>
+			break;
 	}
 
 </body>

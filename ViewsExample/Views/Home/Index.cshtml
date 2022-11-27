@@ -1,54 +1,27 @@
 ﻿@using ViewsExample.Models
-@{
-	string appTitle = "Asp.Net Core App";
-	List<Person> people = new List<Person>()
-	{
-		new Person() { Name = "John", DateOfBirth = DateTime.Parse("2000-05-06"), PersonGender = Gender.Male },
-		new Person() { Name = "Linda", DateOfBirth = DateTime.Parse("2006-01-09"), PersonGender = Gender.Female },
-		new Person() { Name = "Susan", DateOfBirth = DateTime.Parse("2008-07-12"), PersonGender = Gender.Other },
-	};
-}
-
-@{
-	// Method
-	double? GetAge(DateTime? dateOfBirth)
-	{
-		if (dateOfBirth is not null)
-		{
-			return Math.Round((DateTime.Now - dateOfBirth.Value).TotalDays / 365.25);
-		}
-		else
-		{
-			return null;
-		}
-	}
-
-	string alertMessage = $"<script>alert('{people.Count} people found')</script>";
-}
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>@appTitle</title>
+	<title>@ViewData["appTitle"]</title>
 	<meta charset="UTF-8" />
 </head>
 <body>
-	@Html.Raw(alertMessage)
 	<h1>Welcome</h1>
-	@for (int i = 0; i < 2; i++)
+	@{
+		List<Person>? people = (List<Person>?)ViewData["people"];
+	}
+
+	@foreach (Person person in people)
 	{
-		Person person = people[i];
-		@*<span>Hello to</span>*@
-		@:Hello to
 		<div>
-			@person.Name
+		@person.Name
 			<span>, </span>
 			<span>@person.PersonGender</span>
-			@if (person.DateOfBirth != null)
-			{
-				<span>@person.DateOfBirth.Value.ToString("MM-dd-yyyy")</span>
-				<span>@GetAge(person.DateOfBirth) years old</span>
-			}
+		@if (person.DateOfBirth != null)
+		{
+			<span>@person.DateOfBirth.Value.ToString("MM-dd-yyyy")</span>
+		}
 		</div>
 	}
 

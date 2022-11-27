@@ -31,14 +31,9 @@ namespace ViewsExample.Controllers
                     PersonGender = Gender.Other
                 },
             };
-            // ViewData["people"] = people;
-            ViewBag.people = people;
 
             // Views/Home/Index.cshtml
-            return View();
-            // abc.cshtml
-            // return View("abc");
-            // return new ViewResult() { ViewName = "abc" };
+            return View("Index", people);
         }
     }
 }

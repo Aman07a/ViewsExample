@@ -1,20 +1,18 @@
 ﻿@using ViewsExample.Models
+@model IEnumerable<Person>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>@ViewBag.x</title>
+	<title>@ViewBag.appTitle</title>
 	<meta charset="UTF-8" />
 	<link href="~/StyleSheet.css" rel="stylesheet" />
 </head>
 <body>
 	<div class"page-content">
 		<h1>Welcome</h1>
-		@{
-			// List<Person>? people = (List<Person>?)ViewData["people"];
-		}
 
-		@foreach (Person person in ViewBag.people)
+		@foreach (Person person in Model)
 		{
 			<div class="box float-left w-50">
 				<h3>@person.Name</h3>

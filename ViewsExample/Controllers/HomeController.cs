@@ -79,7 +79,7 @@ namespace ViewsExample.Controllers
 			{
 				Name = "Sara",
 				PersonGender = Gender.Female,
-				DateOfBirth = Convert.ToDateTime("2000-05-06")
+				DateOfBirth = Convert.ToDateTime("2004-07-01")
 			};
 
 			Product product = new Product()
@@ -96,5 +96,14 @@ namespace ViewsExample.Controllers
 
 			return View(personAndProductWrapperModel);
 		}
+
+		[Route("home/all-products")]
+		public IActionResult All()
+		{
+			// Views/Products/All.cshtml
+			// Views/Shared/All.cshtml
+			return View();
+		}
+
 	}
 }
